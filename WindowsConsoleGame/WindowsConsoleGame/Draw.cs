@@ -15,7 +15,7 @@ namespace WindowsConsoleGame
 
         public void Point(int x,int y)
         {
-            if (x > 0 && x < 64 && y > 0 && y < 64)
+            if (x >= 0 && x < 64 && y >= 0 && y < 64)
             {
                 Console.SetCursorPosition(x, y);
                 Console.Write(" ");
