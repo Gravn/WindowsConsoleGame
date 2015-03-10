@@ -129,6 +129,12 @@ namespace WindowsConsoleGame
             a.Line(this, v);
         }
 
+        public static Vector2 operator +(Vector2 left,Vector2 right)
+        {
+            left.Add(right);
+            return left;
+        }
+
         public double X { get { return x; } set { x = value; } }
         public double Y { get { return y; } set { y = value; } }
     }

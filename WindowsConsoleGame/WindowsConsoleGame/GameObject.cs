@@ -8,13 +8,20 @@ namespace WindowsConsoleGame
 {
     class GameObject
     {
-
         private Vector2 position;
 
         public Vector2 Position
         {
             get {return position; }
             set { position = value; }
+        }
+
+        private Vector2 velocity = new Vector2(0,0);
+
+        public Vector2 Velocity
+        {
+            get { return velocity; }
+            set { velocity = value; }
         }
         private ConsoleColor color;
 
@@ -23,6 +30,7 @@ namespace WindowsConsoleGame
             get { return color; }
             set { color = value; }
         }
+
         private Draw d;
 
         public GameObject(Vector2 position,ConsoleColor color)
@@ -33,11 +41,20 @@ namespace WindowsConsoleGame
             
         }
 
-        public void Move()
-        { 
-            
-        }
+        public void Update()
+        {
+            velocity += GameWorld.gravity;
 
+            if (position.y >= 64)
+            {
+                velocity.y -= 0.05;
+            }
+
+
+
+
+            position += velocity;
+        }
 
         public void Draw()
         {
