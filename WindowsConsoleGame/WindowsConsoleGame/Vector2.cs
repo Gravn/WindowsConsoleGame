@@ -135,6 +135,12 @@ namespace WindowsConsoleGame
             return left;
         }
 
+        public static Vector2 operator *(Vector2 left, float right)
+        {
+            left.Multiply(right);
+            return left;
+        }
+
         public double X { get { return x; } set { x = value; } }
         public double Y { get { return y; } set { y = value; } }
     }

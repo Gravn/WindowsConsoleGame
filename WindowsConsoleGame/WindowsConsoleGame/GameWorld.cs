@@ -9,9 +9,14 @@ namespace WindowsConsoleGame
     class GameWorld
     {
         public static Draw d = new Draw();
-        public GameObject[] objects = new GameObject[10];
+        public GameObject[] objects = new GameObject[1];
         public Random r = new Random();
-        public static Vector2 gravity = new Vector2(0, 0.0002);
+        public static Vector2 gravity = new Vector2(0,9.82f);
+        public DateTime endtime;
+        public float spf;
+        
+
+
 
         public GameWorld()
         { 
@@ -20,16 +25,34 @@ namespace WindowsConsoleGame
 
         public void Update()
         {
+            DateTime startTime = DateTime.Now;
+            TimeSpan DeltaTime = startTime - endtime;
+            int milliseconds = DeltaTime.Milliseconds > 0 ? DeltaTime.Milliseconds : 1;
+            spf = 1 / (1000 / (float)milliseconds);
+            endtime = DateTime.Now;
+
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.Clear();
 
             foreach (GameObject o in objects)
             {
-                o.Update();
+                o.Update(spf);
                 o.Draw();
             }
-
+            Debug();
+            //System.Threading.Thread.Sleep(20);
+            
             Update();
+
+
+        }
+
+        public void Debug()
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(spf);   
         }
 
         public void Setup()
@@ -42,10 +65,10 @@ namespace WindowsConsoleGame
 
             for (int i = 1; i < 10; i++)
             {
-                objects[i] = objects[0].Clone();
+                //objects[i] = objects[0].Clone();
             }
-            objects[5].Position.x = 32;
-            objects[5].Color = ConsoleColor.Blue;
+            //objects[5].Position.x = 32;
+            //objects[5].Color = ConsoleColor.Blue;
             Update();
         }
     }

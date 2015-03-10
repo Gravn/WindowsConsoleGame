@@ -38,33 +38,27 @@ namespace WindowsConsoleGame
             this.d = GameWorld.d;
             this.position = position;
             this.color = color;
-            
         }
 
-        public void Update()
+        public void Update(float spf)
         {
-            velocity += GameWorld.gravity;
-
-            if (position.y >= 64)
+            if(velocity.y <=30)
             {
-                velocity.y -= 0.05;
+                velocity += GameWorld.gravity;
             }
 
+            if (position.y >= 60)
+            {
+                velocity = new Vector2(1,0);
+            }
 
-
-
-            position += velocity;
+            position += velocity * spf;
         }
 
         public void Draw()
         {
             Console.BackgroundColor = color;
             d.Point(position);
-            int scale = 9;
-            d.Point(new Vector2(position.x + scale, position.y + scale));
-            d.Point(new Vector2(position.x - scale, position.y - scale));
-            d.Point(new Vector2(position.x + scale, position.y - scale));
-            d.Point(new Vector2(position.x - scale, position.y));
         }
 
         public GameObject Clone()
