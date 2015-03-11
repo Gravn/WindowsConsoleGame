@@ -42,17 +42,7 @@ namespace WindowsConsoleGame
 
         public void Update(float spf)
         {
-            if(velocity.y <=30)
-            {
-                velocity += GameWorld.gravity;
-            }
-
-            if (position.y >= 60)
-            {
-                velocity = new Vector2(1,0);
-            }
-
-            position += velocity * spf;
+            
         }
 
         public void Draw()

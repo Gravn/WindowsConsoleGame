@@ -65,11 +65,19 @@ namespace WindowsConsoleGame
 
             for (int i = 1; i < 10; i++)
             {
-                //objects[i] = objects[0].Clone();
+                objects[i] = objects[0].Clone();
             }
-            //objects[5].Position.x = 32;
-            //objects[5].Color = ConsoleColor.Blue;
-            Update();
+
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                { 
+                    
+                }
+            }
+
+
+                Update();
         }
     }
 }
